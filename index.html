@@ -5,22 +5,30 @@
   <title>Ignition Agency | AI Automation & Analytics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Ignition Agency builds AI-powered automation, analytics, and ecommerce systems so founders can automate operations, see their data clearly, and scale faster." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="nav">
     <div class="nav-left">
       <span class="logo-text">IGNITION</span><span class="logo-sub">AGENCY</span>
     </div>
-    <nav class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#services">What We Do</a>
-      <a href="#stack">Ignition Stack</a>
-      <a href="#case-studies">Case Studies</a>
-      <a href="#about">About</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#hero" onclick="closeMenu()">Home</a>
+      <a href="#services" onclick="closeMenu()">What We Do</a>
+      <a href="#stack" onclick="closeMenu()">Ignition Stack</a>
+      <a href="#case-studies" onclick="closeMenu()">Case Studies</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#pricing" onclick="closeMenu()">Pricing</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
   <main>
@@ -43,7 +51,6 @@
         </ul>
       </div>
       <div class="hero-visual">
-        <!-- You can replace this with your astronaut image -->
         <div class="astro-orbit">
           <div class="astro-circle"></div>
         </div>
@@ -87,7 +94,7 @@
       </div>
     </section>
 
-    <!-- STACK (short version) -->
+    <!-- STACK -->
     <section id="stack" class="section section-alt">
       <h2>The Ignition Stack</h2>
       <p class="section-sub">A unified data, automation, and AI system that compounds over time.</p>
@@ -111,8 +118,34 @@
       </div>
     </section>
 
+    <!-- CASE STUDIES -->
+    <section id="case-studies" class="section">
+      <h2>Case Studies</h2>
+      <p class="section-sub">Real results for real businesses.</p>
+      <div class="grid-3">
+        <article class="card">
+          <div class="case-tag">Ecommerce</div>
+          <h3>GA4 + Shopify Overhaul</h3>
+          <p>Rebuilt tracking foundations for a DTC brand — went from zero reliable data to full attribution across paid and organic channels within 3 weeks.</p>
+          <p class="case-result">Result: 40% reduction in wasted ad spend.</p>
+        </article>
+        <article class="card">
+          <div class="case-tag">Automation</div>
+          <h3>Reporting Automation</h3>
+          <p>Replaced 8 hours of weekly manual reporting with an automated pipeline — data pulled, formatted, and delivered every Monday morning.</p>
+          <p class="case-result">Result: 8 hours saved weekly, zero errors.</p>
+        </article>
+        <article class="card">
+          <div class="case-tag">AI</div>
+          <h3>AI Operations Layer</h3>
+          <p>Built an AI agent stack to handle customer support triage, internal knowledge queries, and weekly performance summaries for a SaaS team.</p>
+          <p class="case-result">Result: 60% reduction in support response time.</p>
+        </article>
+      </div>
+    </section>
+
     <!-- ABOUT -->
-    <section id="about" class="section">
+    <section id="about" class="section section-alt">
       <h2>About Ignition Agency</h2>
       <div class="split">
         <div>
@@ -132,7 +165,7 @@
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="section section-alt">
+    <section id="pricing" class="section">
       <h2>Engagement Options</h2>
       <p class="section-sub">Start small, or go all-in. Each tier is built around outcomes and systems.</p>
       <div class="pricing-grid">
@@ -167,11 +200,12 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h2>Let’s Ignite Your Growth</h2>
+    <section id="contact" class="section section-alt">
+      <h2>Let's Ignite Your Growth</h2>
       <p class="section-sub">Tell us where you are now and what you want your systems to do for you.</p>
       <div class="split">
-        <form class="contact-form">
+        <!-- Formspree: replace YOUR_FORM_ID with your Formspree form id at formspree.io -->
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <label>
             Name
             <input type="text" name="name" required />
@@ -223,13 +257,26 @@
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
-        <li>Email</li>
-        <li>LinkedIn</li>
+        <li><a href="mailto:hello@ignitionagency.au">hello@ignitionagency.au</a></li>
+        <li><a href="https://linkedin.com/company/ignitionagency" target="_blank">LinkedIn</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
-      © Ignition Agency. All rights reserved.
+      © 2026 Ignition Agency. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-links');
+      const btn = document.getElementById('hamburger');
+      nav.classList.toggle('open');
+      btn.classList.toggle('active');
+    }
+    function closeMenu() {
+      document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
+    }
+  </script>
 </body>
 </html>
