@@ -16,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #111111 0, #000000 55%);
   color: var(--text);
 }
@@ -25,12 +25,12 @@ body {
 .nav {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5vw;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.92);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
@@ -61,10 +61,49 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.75rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-links a:hover {
   color: var(--accent-soft);
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* HERO */
@@ -77,7 +116,7 @@ body {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 1.05;
   margin-bottom: 1rem;
 }
@@ -112,6 +151,15 @@ body {
 
 .hero-bullets li {
   margin-bottom: 0.35rem;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.hero-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
 }
 
 /* Buttons */
@@ -128,6 +176,8 @@ body {
   text-decoration: none;
   cursor: pointer;
   font-weight: 600;
+  min-height: 44px;
+  font-family: inherit;
 }
 
 .btn-primary {
@@ -150,7 +200,7 @@ body {
   border-color: var(--accent-soft);
 }
 
-/* Hero visual placeholder */
+/* Hero visual */
 .hero-visual {
   display: flex;
   align-items: center;
@@ -185,20 +235,21 @@ body {
 }
 
 .section h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   margin-bottom: 0.75rem;
 }
 
 .section-sub {
   color: var(--muted);
   max-width: 36rem;
+  margin-top: 0;
 }
 
 /* GRID */
 .grid-3 {
   margin-top: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.75rem;
 }
 
@@ -225,6 +276,31 @@ body {
   color: var(--muted);
 }
 
+.card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* CASE STUDIES */
+.case-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.case-result {
+  color: var(--accent-soft) !important;
+  font-weight: 600;
+  font-size: 0.9rem !important;
+  margin-top: 0.75rem;
+}
+
 /* STACK */
 .stack-grid {
   margin-top: 2.5rem;
@@ -236,7 +312,18 @@ body {
   border-radius: 0.75rem;
   border: 1px solid var(--border);
   padding: 1rem 1.25rem;
-  background: linear-gradient(90deg, rgba(245, 166, 35, 0.2), transparent);
+  background: linear-gradient(90deg, rgba(245, 166, 35, 0.12), transparent);
+}
+
+.stack-layer h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.stack-layer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 /* SPLIT */
@@ -287,6 +374,7 @@ body {
   color: var(--text);
   font-family: inherit;
   font-size: 0.9rem;
+  min-height: 44px;
 }
 
 .contact-form input:focus,
@@ -300,17 +388,23 @@ body {
   color: var(--muted);
 }
 
+.contact-side h3 {
+  margin-top: 0;
+}
+
 /* FOOTER */
 .footer {
   border-top: 1px solid var(--border);
   background: #050505;
   padding: 2.5rem 5vw 1.5rem;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
 }
 
 .footer-col h4 {
   margin-bottom: 0.5rem;
+  color: var(--accent-soft);
 }
 
 .footer-col ul {
@@ -325,33 +419,126 @@ body {
   margin-bottom: 0.3rem;
 }
 
+.footer-col ul a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer-col ul a:hover {
+  color: var(--accent-soft);
+}
+
 .footer-bottom {
+  grid-column: 1 / -1;
   margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
   font-size: 0.8rem;
   color: var(--muted);
 }
 
-/* LAYOUT UTILITIES */
-.footer {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
+/* =====================
+   RESPONSIVE / MOBILE
+   ===================== */
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+
+  /* NAV — hamburger mode */
+  .nav {
+    flex-wrap: wrap;
+    padding: 0.75rem 5vw;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.75rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+    min-height: 48px;
+  }
+
+  /* HERO */
   .hero {
     grid-template-columns: 1fr;
-    padding-top: 4rem;
+    padding: 3rem 5vw 2.5rem;
+    gap: 2rem;
   }
 
   .hero-visual {
     order: -1;
   }
 
+  .astro-orbit {
+    width: 160px;
+    height: 160px;
+  }
+
+  .astro-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 2.5rem 5vw;
+  }
+
+  /* SPLIT → single column */
   .split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* GRIDS → single column on small screens */
+  .grid-3,
+  .pricing-grid {
     grid-template-columns: 1fr;
   }
 
-  .nav-links {
-    display: none; /* quick simplification; later we can add a mobile menu */
+  /* STACK */
+  .stack-grid {
+    gap: 0.75rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
   }
 }
