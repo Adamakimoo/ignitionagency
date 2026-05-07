@@ -353,6 +353,13 @@ body {
   font-size: 0.9rem;
 }
 
+.price {
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0.25rem 0 0.75rem;
+}
+
 /* CONTACT */
 .contact-form {
   display: grid;
